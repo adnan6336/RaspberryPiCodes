@@ -1,0 +1,10 @@
+[Unit]
+Description=RTC Time Sync Service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sudo /usr/bin/python3 /home/pi/DVR/Scripts/getRTCTime.py
+
+[Install]
+WantedBy=multi-user.target
