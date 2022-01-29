@@ -10,13 +10,27 @@ sudo systemctl stop fake-hwclock
 sudo systemctl disable fake-hwclock
 sudo timedatectl set-ntp 0
 sudo pip3 install ntplib
-
+sudo systemctl disable RTCTimeSync
 sudo rm /home/pi/rtc
 sudo rm /home/pi/rc.temp
 
 wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/rc.temp
 wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/config.temp
+wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/getRTCTime.py
+wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/setRTCTime.py
+wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/testRTCTime.py
+wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py
+wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service
 
+sudo mkdir /home/pi/DVR/DDLogs
+
+sudo mv getRTCTime.py /home/pi/DVR/Scripts
+sudo mv setRTCTime.py /home/pi/DVR/Scripts
+sudo mv testRTCTime.py /home/pi/DVR/Scripts
+sudo mv ds3231.py /home/pi/DVR/Scripts
+sudo mv RTCTimeSync.py /home/pi/DVR/Service
+
+sudo systemctl enable /home/pi/DVR/Service/RTCTimeSync.service
 
 sudo cat /home/pi/rc.temp > /etc/rc.local
 sudo cat /home/pi/config.temp > /boot/config.txt
