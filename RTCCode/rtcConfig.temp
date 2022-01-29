@@ -1,0 +1,17 @@
+timedatectl manage time synchronization  with internet
+timesync manages time synchronization with internet
+fakeclock get time from last saved and update on boot
+
+with everything above disabled, raspberry pi set its time to some default value every time it boots.
+
+
+sudo systemctl stop systemd-timesyncd
+sudo systemctl disable systemd-timesyncd
+sudo apt-get -y remove fake-hwclock
+sudo update-rc.d -f fake-hwclock remove
+sudo systemctl disable fake-hwclock
+sudo systemctl stop fake-hwclock
+sudo apt-get remove ntp
+sudo timedatectl set-ntp 0
+sudo apt-get remove ntpdate
+
