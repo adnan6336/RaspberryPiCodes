@@ -22,7 +22,7 @@ wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/t
 wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py
 wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service
 
-sudo mkdir /home/pi/DVR/DLogs
+sudo mkdir /home/pi/DVR/DDLogs
 
 sudo mv getRTCTime.py /home/pi/DVR/Scripts
 sudo mv setRTCTime.py /home/pi/DVR/Scripts
