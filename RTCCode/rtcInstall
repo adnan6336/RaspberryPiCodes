@@ -1,37 +1,28 @@
-systemctl stop timeSync
-systemctl disable timeSync
+sudo systemctl stop timeSync
+sudo systemctl disable timeSync
+sudo systemctl stop systemd-timesyncd
+sudo systemctl disable systemd-timesyncd.service
+sudo apt-get remove -y ntp
+sudo apt-get remove ntpdate
+sudo apt-get -y remove fake-hwclock
+sudo update-rc.d -f fake-hwclock remove
+sudo systemctl stop fake-hwclock
+sudo systemctl disable fake-hwclock
+sudo timedatectl set-ntp 0
+sudo pip3 install ntplib
 
-systemctl disable systemd-timesyncd.service
-apt-get remove -y ntp
+sudo rm /home/pi/rtc
+sudo rm /home/pi/rc.temp
 
-rm /home/pi/RTC
-
-cat /home/pi/rc.temp > /etc/rc.local
-
-echo "dtoverlay=i2c-rtc,ds3231" >> /boot/config.txt
-apt-get -y remove fake-hwclock
-update-rc.d -f fake-hwclock remove
-systemctl disable fake-hwclock
-
-sed -i '7,9 s/^/#/' /lib/udev/hwclock-set
-sed -i '29 s/^/#/' /lib/udev/hwclock-set
-sed -i '32 s/^/#/' /lib/udev/hwclock-set
-
-
-apt-get install -y ntp
+wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/rc.temp
+wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/config.temp
 
 
-date
+sudo cat /home/pi/rc.temp > /etc/rc.local
+sudo cat /home/pi/config.temp > /boot/config.txt
 
-echo
-read -p "Is the time above correct? y/n " ANS
+sudo rm /home/pi/rc.temp
+sudo rm /home/pi/config.temp
 
-if [ $ANS = 'y' ] || [ $ANS = 'Y' ]; then
-echo "Time OK"
-else
-echo; echo "Please connect to the internet"
-echo "or GPS to get correct time"; echo
-exit 0
-fi
-
-hwclock -w
+echo "Kindly reboot by typing "sudo reboot"
+sudo rm -- "$0"
