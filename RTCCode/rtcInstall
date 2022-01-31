@@ -28,7 +28,7 @@ sudo mv getRTCTime.py /home/pi/DVR/Scripts
 sudo mv setRTCTime.py /home/pi/DVR/Scripts
 sudo mv testRTCTime.py /home/pi/DVR/Scripts
 sudo mv ds3231.py /home/pi/DVR/Scripts
-sudo mv RTCTimeSync.py /home/pi/DVR/Service
+sudo mv RTCTimeSync.service /home/pi/DVR/Service
 
 sudo systemctl enable /home/pi/DVR/Service/RTCTimeSync.service
 
@@ -38,5 +38,5 @@ sudo cat /home/pi/config.temp > /boot/config.txt
 sudo rm /home/pi/rc.temp
 sudo rm /home/pi/config.temp
 
-echo "Kindly reboot by typing "sudo reboot"
+echo "Kindly reboot by typing sudo reboot"
 sudo rm -- "$0"
