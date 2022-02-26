@@ -12,3 +12,7 @@ Use the command given below to set up RTC on raspberry pi
 *set time manually*
 
 ```sudo python3 /home/pi/DVR/Scripts/setRTCTime.py```
+
+Note the installation failed due to time out then one possible solution would be to first set your time in order to get the installation files from github.
+for that, try this command.
+``` sudo date -s "yyyy-mm-dd"```
