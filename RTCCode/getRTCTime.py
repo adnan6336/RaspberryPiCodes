@@ -26,7 +26,7 @@ with open('/home/pi/DVR/DLogs/RTCBootTime.txt','a') as file:
     file.write(' || RTC Time : '+str(dateToSet))    
 
 
-command = 'sudo date -s \"'+str(dateToSet)+'\"'
+command = 'sudo date +\"%Y-%m-%d %H:%M:%s\" -s \"'+str(dateToSet)+'\"'
 # print(command)
 stream = os.popen(command)
 # print(stream.read())
