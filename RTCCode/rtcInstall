@@ -24,6 +24,7 @@ curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/t
 curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py > /home/pi/ds3231.py
 curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service > /home/pi/RTCTimeSync.service
 curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/hwclock-set.temp > /home/pi/hwclock-set.temp
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/autoshutdown.py > /home/pi/autoshutdown.py
 
 if [ ! -d /home/pi/DVR/DLogs ]; then
   sudo mkdir /home/pi/DVR/DLogs
@@ -33,8 +34,10 @@ fi
 sudo mv getRTCTime.py /home/pi/DVR/Scripts
 sudo mv setRTCTime.py /home/pi/DVR/Scripts
 sudo mv testRTCTime.py /home/pi/DVR/Scripts
+sudo mv autoshutdown.py /home/pi/DVR/Scripts
 sudo mv ds3231.py /home/pi/DVR/Scripts
 sudo mv RTCTimeSync.service /home/pi/DVR/Service
+
 
 sudo systemctl enable /home/pi/DVR/Service/RTCTimeSync.service
 
