@@ -3,10 +3,11 @@ Use the command given below to set up RTC on raspberry pi
 
 ```wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/rtcInstall ; sudo bash rtcInstall```
 
-*After successfull installation you must reboot by typing *
+*After successfull installation you must reboot by typing*
+
 ``` sudo reboot ```
-*
-Then use one of the command given below to set up the time for the first time only*
+
+*Then use one of the command given below to set up the time for the first time only*
 
 *set time using internet*
 
