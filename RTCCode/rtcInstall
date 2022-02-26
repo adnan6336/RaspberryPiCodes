@@ -9,20 +9,25 @@ sudo update-rc.d -f fake-hwclock remove
 sudo systemctl stop fake-hwclock
 sudo systemctl disable fake-hwclock
 sudo timedatectl set-ntp 0
-sudo pip3 install ntplib
 sudo systemctl disable RTCTimeSync
-sudo rm /home/pi/rtc
-sudo rm /home/pi/rc.temp
+sudo rm -f -- /home/pi/rtc
+sudo rm -f -- /home/pi/rc.temp
 
-wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/rc.temp
-wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/config.temp
-wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/getRTCTime.py
-wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/setRTCTime.py
-wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/testRTCTime.py
-wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py
-wget https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service
+set -e
+sudo pip3 install ntplib
 
-sudo mkdir /home/pi/DVR/DLogs
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/rc.temp
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/config.temp
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/getRTCTime.py
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/setRTCTime.py
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/testRTCTime.py
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service
+
+if [ ! -d /home/pi/DVR/DLogs ]; then
+  sudo mkdir /home/pi/DVR/DLogs
+fi
+
 
 sudo mv getRTCTime.py /home/pi/DVR/Scripts
 sudo mv setRTCTime.py /home/pi/DVR/Scripts
