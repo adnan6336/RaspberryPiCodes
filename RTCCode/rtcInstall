@@ -16,14 +16,14 @@ sudo rm -f -- /home/pi/rc.temp
 set -e
 sudo pip3 install ntplib
 
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/rc.temp
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/config.temp
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/getRTCTime.py
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/setRTCTime.py
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/testRTCTime.py
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service
-wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/hwclock-set.temp
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/rc.temp > /home/pi/rc.temp
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/config.temp > /home/pi/config.temp
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/getRTCTime.py > /home/pi/getRTCTime.py
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/setRTCTime.py > /home/pi/setRTCTime.py
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/testRTCTime.py > /home/pi/testRTCTime.py
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py > /home/pi/ds3231.py
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service > /home/pi/RTCTimeSync.service
+curl https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/hwclock-set.temp > /home/pi/hwclock-set.temp
 
 if [ ! -d /home/pi/DVR/DLogs ]; then
   sudo mkdir /home/pi/DVR/DLogs
