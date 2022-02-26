@@ -23,6 +23,7 @@ wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCod
 wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/testRTCTime.py
 wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/ds3231.py
 wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/RTCTimeSync.service
+wget -o https://raw.githubusercontent.com/adnan6336/RaspberryPiCodes/main/RTCCode/hwclock-set.temp
 
 if [ ! -d /home/pi/DVR/DLogs ]; then
   sudo mkdir /home/pi/DVR/DLogs
@@ -39,9 +40,12 @@ sudo systemctl enable /home/pi/DVR/Service/RTCTimeSync.service
 
 sudo cat /home/pi/rc.temp > /etc/rc.local
 sudo cat /home/pi/config.temp > /boot/config.txt
+sudo cat /home/pi/hwclock-set.temp > /lib/udev/hwclock-set
 
 sudo rm /home/pi/rc.temp
 sudo rm /home/pi/config.temp
+sudo rm /home/pi/hwclock-set.temp
 
-echo "Kindly reboot by typing sudo reboot"
+echo "Installation finished successfully"
+echo "Kindly reboot by typing <sudo reboot>"
 sudo rm -- "$0"
